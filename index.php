@@ -2,7 +2,7 @@
 require_once 'classes/Produto.class.php';
 $produto = new Produto();
 
-// Processa o envio do formulário
+
 if (isset($_POST['nome'])) {
     $nome      = $_POST['nome'];
     $descricao = $_POST['descricao'];
@@ -91,7 +91,7 @@ if (isset($_POST['nome'])) {
 
         button[type="submit"] {
             width: 100%;
-            background-color: #0066cc;
+            background-color: #7F00FF;
             color: #fff;
             padding: 0.8rem;
             border: none;
@@ -103,7 +103,7 @@ if (isset($_POST['nome'])) {
         }
 
         button[type="submit"]:hover {
-            background-color: #0052a3;
+            background-color: #7F00FF;
         }
 
         hr {

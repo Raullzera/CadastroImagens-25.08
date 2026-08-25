@@ -20,7 +20,7 @@
             text-align: center;
         }
 
-        /* Container do Formulário */
+      
         form {
             background: #ffffff;
             padding: 2rem;
@@ -68,7 +68,7 @@
 
         button[type="submit"] {
             width: 100%;
-            background-color: #0066cc;
+            background-color: #7F00FF;
             color: #fff;
             padding: 0.8rem;
             border: none;
@@ -80,10 +80,10 @@
         }
 
         button[type="submit"]:hover {
-            background-color: #0052a3;
+            background-color: #7F00FF;
         }
 
-        /* Divisor */
+      
         hr {
             width: 100%;
             max-width: 900px;
@@ -93,7 +93,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Grade de Produtos */
+   
         .produtos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

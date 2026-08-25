@@ -7,7 +7,7 @@ class Produto {
     private $pdo;
 
     public function __construct(){
-        $dns  = "mysql:host=localhost;dbname=loja";
+        $dns  = "mysql:host=localhost;dbname=imagem_db";
         $user = "root";
         $pass = "";
    
@@ -24,12 +24,12 @@ class Produto {
     }
 
     public function enviarProduto($nome, $descricao, $valor, $fotos = array()){
-        // Trata o valor monetário (converte vírgula para ponto)
+     
         $valor = str_replace('.', '', $valor);
         $valor = str_replace(',', '.', $valor);
         $valor = (float) $valor;
 
-        // 1. Inserir Produto na tabela produtos
+       
         $sql = "INSERT INTO produtos (nome_produto, descricao, valor) VALUES (:n, :d, :v)";
         $sql = $this->pdo->prepare($sql);
 
@@ -42,12 +42,12 @@ class Produto {
         if($isOk){
             $id_produto = $this->pdo->lastInsertId();
 
-            // 2. Garante que a pasta imgs/ exista no projeto
+   
             if (!file_exists("imgs")) {
                 mkdir("imgs", 0777, true);
             }
 
-            // 3. Processar e mover arquivos
+    
             if(isset($fotos['name']) && is_array($fotos['name'])){
                 for ($i = 0; $i < count($fotos['name']); $i++) { 
                     if ($fotos['error'][$i] === UPLOAD_ERR_OK) {
@@ -57,9 +57,9 @@ class Produto {
                         $ext = pathinfo($nome_original, PATHINFO_EXTENSION);
                         $nome_foto = md5($nome_original . time() . rand(0, 9999)) . '.' . $ext;
 
-                        // Salva o arquivo fisicamente na pasta imgs/
+                   
                         if (move_uploaded_file($tmp_name, "imgs/" . $nome_foto)) {
-                            // Insere o registro na tabela imagens
+                        
                             $sqlImg = "INSERT INTO imagens (nome_imagem, fk_id_produto) VALUES (:n, :p)";
                             $sqlImg = $this->pdo->prepare($sqlImg);
                             $sqlImg->bindValue(':n', $nome_foto);

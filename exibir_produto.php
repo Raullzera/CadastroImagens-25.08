@@ -25,7 +25,7 @@ if(isset ($_GET['id'])&& !empty($_GET['id'])){
     </div>
     <?php 
     foreach( $dadosProduto as $dado){
-        <div id="imagens">
+        <div id="imagens">  
         <img src="imagens/<?php echo $dado['nome_imagem'];?>">
         <button class = "compra verde">Comprar</button>
         </div>
