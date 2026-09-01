@@ -85,6 +85,19 @@ class Produto {
         }
     }
 
+    public function buscarProduto($id){
+        $sql = "SELECT * FROM produtos WHERE id_produto = :id";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+    
+        if($sql->rowCount() > 0){
+            return $sql->fetch(PDO::FETCH_ASSOC);
+        }else{
+            return array();
+        }
+    }
+
     public function buscarImagens($id){
         $sql = "SELECT * FROM imagens WHERE fk_id_produto = :id";
         $sql = $this->pdo->prepare($sql);

@@ -1,14 +1,13 @@
 <?php
 require 'classes/Produto.class.php';
-$produto = new Produto ();
-if(isset ($_GET['id'])&& !empty($_GET['id'])){
-    $id_produto = $_GET ['id'];
+$produto = new Produto();
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id_produto = $_GET['id'];
     $dadosProduto = $produto->buscarProduto($id_produto);
     $dadosImagens = $produto->buscarImagens($id_produto);
-}else{
+} else {
     echo "<script>alert('Faltou o id do produto')</script>";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,20 +19,16 @@ if(isset ($_GET['id'])&& !empty($_GET['id'])){
 <body>
    <section>
     <div>
-        <h1><?phpecho $dadosProduto['nome_produto'];?></h1>
-        <p><span> Descrição: </span> <?php echo $dadosProduto['descrição'];?></p>  
+        <h1><?php echo $dadosProduto['nome_produto']; ?></h1>
+        <p><span> Descrição: </span> <?php echo $dadosProduto['descricao']; ?></p>  
     </div>
-    <?php 
-    foreach( $dadosProduto as $dado){
+
+    <?php foreach ($dadosImagens as $dado) { ?>
         <div id="imagens">  
-        <img src="imagens/<?php echo $dado['nome_imagem'];?>">
-        <button class = "compra verde">Comprar</button>
+            <img src="imgs/<?php echo $dado['nome_imagem']; ?>">
+            <button class="compra verde">Comprar</button>
         </div>
-        </php>
-    }
-    ?>
-
+    <?php } ?>
    </section>    
-
 </body>
 </html>
